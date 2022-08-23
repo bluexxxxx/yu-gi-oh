@@ -2,9 +2,9 @@
   <div class='container'>
     <h1>商品專區</h1>
     <n-grid cols="1 s:2 l:3" responsive="screen" class="mg-t" >
-      <n-grid-item v-for="(product, idx) in products" :key='idx'>
+      <n-grid-item v-for="(product, idx) in sliceProducts" :key='idx'>
           <div class="n-card-container">
-            <n-card v-if='products.length>0' :key='product._id'>
+            <n-card v-if='sliceProducts.length>0' :key='product._id'>
               <template #cover>
                 <div class="imgbox">
                   <img :src="product.image">
@@ -25,15 +25,24 @@
           </div>
       </n-grid-item>
     </n-grid>
+    <n-pagination v-model:page="currentPage" :page-count="Math.ceil(products.length / pageSize)" />
   </div>
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { reactive, ref, computed } from 'vue'
 import Swal from 'sweetalert2'
 import { api } from '@/plugins/axios'
 import { useUserStore } from '@/stores/user'
+
 const user = useUserStore()
+
+const currentPage = ref(1)
+const pageSize = 9
+const sliceProducts = computed(()=> {
+  return products.slice((currentPage.value * pageSize) - pageSize, (currentPage.value * pageSize))
+})
+
 const { addCart } = user
 
 const products = reactive([])
@@ -166,5 +175,10 @@ h3 { font-family:YGO_Card_JP, serif; }
 
 .n-grid{
   gap:20px !important;
+}
+
+.n-pagination {
+  float: right;
+  margin-top: 50px;
 }
 </style>

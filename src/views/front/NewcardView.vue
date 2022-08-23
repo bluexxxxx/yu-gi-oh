@@ -6,7 +6,7 @@
       <img src="@/assets/product_05.png">
     </div>
     <n-grid cols="2 s:4 l:6" responsive="screen">
-      <n-grid-item v-for="(newcard, idx) in newcards" :key='idx'>
+      <n-grid-item v-for="(newcard, idx) in sliceNewcards" :key='idx'>
       <a @click="openDialog(newcard._id, idx)">
         <n-card>
           <template #cover>
@@ -16,6 +16,7 @@
         </a>
       </n-grid-item>
     </n-grid>
+    <n-pagination v-model:page="currentPage" :page-count="Math.ceil(newcards.length / pageSize)" />
   </div>
   <n-config-provider :theme-overrides="themeOverrides">
     <n-modal v-model:show="showModal" class="modal-card">
@@ -83,10 +84,16 @@
 </template>
 
 <script setup>
-import { reactive, ref } from 'vue'
+import { reactive, ref, computed } from 'vue'
 import Swal from 'sweetalert2'
 import { api } from '@/plugins/axios'
 import { NConfigProvider } from 'naive-ui'
+
+const currentPage = ref(1)
+const pageSize = 24
+const sliceNewcards = computed(()=> {
+  return newcards.slice((currentPage.value * pageSize) - pageSize, (currentPage.value * pageSize))
+})
 
 const attrs = [
   '光', '暗', '水', '炎', '地', '風', '神', '魔', '罠'
@@ -322,6 +329,11 @@ init()
   .imgbox img {
     width: 20%;
     margin: auto;
+  }
+
+  .n-pagination {
+    float: right;
+    margin-top: 50px;
   }
 
   @media (min-width: 640px) {

@@ -2,7 +2,7 @@
   <div class="container">
     <h1>卡組專欄</h1>
     <n-grid cols="1 s:2 l:3" responsive="screen" class="mg-t">
-      <n-grid-item v-for="(deck, idx) in decks" :key='idx'>
+      <n-grid-item v-for="(deck, idx) in sliceDecks" :key='idx'>
       <a @click="openDialog(deck._id, idx)">
         <n-card>
           <template #cover>
@@ -13,6 +13,7 @@
         </a>
       </n-grid-item>
     </n-grid>
+    <n-pagination v-model:page="currentPage" :page-count="Math.ceil(decks.length / pageSize)" />
   </div>
   <n-modal class="show-article"  v-model:show="showModal" preset="card" style=" width:80%; background: black; color:white;" >
       <div class="deck_image">
@@ -34,12 +35,18 @@
 </template>
 
 <script setup>
-import { reactive, ref } from 'vue'
+import { reactive, ref, computed } from 'vue'
 import Swal from 'sweetalert2'
 import { api } from '@/plugins/axios'
 
 
 const decks = reactive([])
+
+const currentPage = ref(1)
+const pageSize = 6
+const sliceDecks = computed(()=> {
+  return decks.slice((currentPage.value * pageSize) - pageSize, (currentPage.value * pageSize))
+})
 
 const form = reactive({
   _id: '',
@@ -155,6 +162,10 @@ init()
   gap:20px !important;
   }  
 
+  .n-pagination {
+    float: right;
+    margin-top: 50px;
+  }
 
   @media (min-width: 1400px) { 
   
