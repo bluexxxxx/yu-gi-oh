@@ -1,0 +1,127 @@
+@import "./base.css";
+
+#app {
+  max-width: 100%;
+  margin: 0;
+  background: url(./ShopBGBase02.png) no-repeat fixed;
+  background-size: cover;
+  /* max-width: 1280px;
+  margin: 0 auto; */
+  /* padding: 2rem; */
+
+  font-weight: normal;
+}
+
+
+a,
+.green {
+  text-decoration: none;
+  color: white;
+  transition: 0.4s;
+}
+
+@media (hover: hover) {
+  a:hover {
+    background-color: hsla(160, 100%, 37%, 0.2);
+  }
+}
+
+/* @media (min-width: 1024px) {
+  body {
+    display: flex;
+    place-items: center;
+  }
+
+  #app {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0 2rem;
+  }
+} */
+
+@font-face {
+  font-family: Perfect DOS VGA 437;
+  src: url(../assets/Font/Perfect\ DOS\ VGA\ 437.woff);
+}
+
+@font-face {
+  font-family: AtkDef;
+  src: url(../assets/Font/AtkDef.woff);
+}
+
+@font-face {
+  font-family: YGO_Card_JP;
+  src: url(../assets/Font/YGO_Card_JP.woff);
+}
+
+@font-face {
+  font-family: YGO_Card_NA;
+  src: url(../assets/Font/YGO_Card_NA.woff);
+}
+
+@font-face {
+  font-family: ChenYuluoyan-Thin;
+  src: url(../assets/Font/ChenYuluoyan-Thin.woff);
+}
+
+@font-face {
+  font-family: 文鼎新藝體;
+  src: url(../assets/Font/文鼎新藝體.woff);
+}
+
+@font-face {
+  font-family: FOT-KafuTechnoStd-H;
+  src: url(../assets/Font/FOT-KafuTechnoStd-H.otf) format("opentype");
+}
+
+@font-face {
+  font-family: FOT-RODINNTLGPRO-B;
+  src: url(../assets/Font/FOT-RODINNTLGPRO-B.otf) format("opentype");
+}
+
+@font-face {
+  font-family: FOT-RodinPro-DB;
+  src: url(../assets/Font/FOT-RodinPro-DB.otf) format("opentype");
+}
+
+@font-face {
+  font-family: NotoSansTC-Black;
+  src: url(../assets/Font/NotoSansTC-Black.otf) format("opentype");
+}
+
+@font-face {
+  font-family: NotoSansTC-Bold;
+  src: url(../assets/Font/NotoSansTC-Bold.otf) format("opentype");
+}
+
+@font-face {
+  font-family: NotoSansTC-Light;
+  src: url(../assets/Font/NotoSansTC-Light.otf) format("opentype");
+}
+
+@font-face {
+  font-family: NotoSansTC-Medium;
+  src: url(../assets/Font/NotoSansTC-Medium.otf) format("opentype");
+}
+
+@font-face {
+  font-family: NotoSansTC-Regular;
+  src: url(../assets/Font/NotoSansTC-Regular.otf) format("opentype");
+}
+
+@font-face {
+  font-family: NotoSansTC-Thin;
+  src: url(../assets/Font/NotoSansTC-Thin.otf) format("opentype");
+}
+
+body {
+  font-family: 'NotoSansTC-Bold';
+}
+
+
+h1 { font-family: FOT-RODINNTLGPRO-B, serif; }
+nav a { font-family: 文鼎新藝體, serif; }
+p { font-family:YGO_Card_JP, serif; }
+
+
+
