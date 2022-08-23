@@ -2,7 +2,7 @@
   <div class="container">
     <div class="flex_container">
       <n-form class="form_flex" ref="formRef" :model="form" :rules="rules" v-model="valid" @submit.prevent='login'>
-        <h1 style="border-bottom:black solid 2px">會員登入</h1>
+        <h1 class="member-login">會員登入</h1>
         <n-form-item path="account" label="帳號">
           <n-input style="width:200px" type="text" placeholder="請輸入帳號" v-model:value="form.account"></n-input>
         </n-form-item>
@@ -118,6 +118,11 @@ RouterLink {
 
   .n-form-item.n-form-item--top-labelled .n-form-item-label {
     color: white;
+  }
+
+  .member-login {
+    border-bottom:#404758 solid 3px; 
+    margin-bottom: 20px;
   }
 
       @media (min-width:768px) {

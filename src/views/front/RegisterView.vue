@@ -2,7 +2,7 @@
   <div class="container">
     <div class="flex_container">
     <n-form class="form_flex" ref="formRef" :model="form" :rules="rules" v-model="valid" @submit.prevent='register'>
-      <h1>會員註冊</h1>
+      <h1 class="member-register">會員註冊</h1>
       <n-form-item path="account" label="帳號">
         <n-input type="text" style="width:200px;" placeholder="請輸入帳號" v-model:value="form.account"></n-input>
       </n-form-item>
@@ -151,6 +151,12 @@ const register = async () => {
       width: 350px;
     }
   }
+
+  .member-register {
+    border-bottom:#404758 solid 3px;
+    margin-bottom: 20px;
+  }
+
 
   @media (min-width:1400px) {
 
