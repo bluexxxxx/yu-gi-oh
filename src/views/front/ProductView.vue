@@ -38,7 +38,7 @@ import { useUserStore } from '@/stores/user'
 const user = useUserStore()
 
 const currentPage = ref(1)
-const pageSize = 9
+const pageSize = 6
 const sliceProducts = computed(()=> {
   return products.slice((currentPage.value * pageSize) - pageSize, (currentPage.value * pageSize))
 })
