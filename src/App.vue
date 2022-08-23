@@ -17,6 +17,14 @@ const themeOverrides = {
     borderColor:'#5e6160',
     thTextColor:'#cdedff',
     tdTextColor:'#112797'
+  },
+  Pagination: {
+    itemTextColor: '#fff',
+    itemTextColorActive: '#f29766',
+    itemTextColorPressed: '#fff',
+    buttonColor:'#fff',
+    buttonColorPressed:'#fff',
+    itemBorderActive:'#fff'
   }
 }
 </script>

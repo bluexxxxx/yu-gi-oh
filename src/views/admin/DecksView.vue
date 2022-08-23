@@ -49,8 +49,8 @@
               </tr>
             </thead>
             <tbody>
-              <template v-for='(deck, idx) in decks'>
-                <tr v-if='decks.length > 0' :key='deck._id'>
+              <template v-for='(deck, idx) in sliceDecks'>
+                <tr v-if='sliceDecks.length > 0' :key='deck._id'>
                   <td><img :src="deck.image" /></td>
                   <td>{{ deck.name }}</td>
                   <td style="white-space:pre">{{ deck.description }}</td>
@@ -62,17 +62,24 @@
           </n-table>
         </n-space>
       </div>
+      <n-pagination v-model:page="currentPage" :page-count="Math.ceil(decks.length / pageSize)" />
     </div>
   </div>
 </template>
 
 <script setup>
-import { reactive, ref } from "vue";
+import { reactive, ref, computed } from "vue";
 import Swal from 'sweetalert2'
 import { apiAuth } from '@/plugins/axios'
 const decks = reactive([])
 // form裡面要多一個 index(idx) 要修改表單內容比較方便
 const showModal = ref(false);
+
+const currentPage = ref(1)
+const pageSize = 5
+const sliceDecks = computed(()=> {
+  return decks.slice((currentPage.value * pageSize) - pageSize, (currentPage.value * pageSize))
+})
 
 const form = reactive({
   _id: '',
@@ -209,5 +216,10 @@ init()
 
   td img {
     height: 100%;
+  }
+
+  .n-pagination {
+    margin-top: 50px;
+    margin-left: 500px;
   }
 </style>

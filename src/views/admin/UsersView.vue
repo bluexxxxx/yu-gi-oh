@@ -14,8 +14,8 @@
               </tr>
             </thead>
             <tbody>
-              <template v-for='(user, idx) in users'>
-                <tr v-if='users.length > 0' :key='user._id'>
+              <template v-for='(user, idx) in sliceUsers'>
+                <tr v-if='sliceUsers.length > 0' :key='user._id'>
                   <td>{{user._id}}</td>
                   <td>{{ user.account }}</td>
                   <td>
@@ -27,16 +27,23 @@
           </n-table>
         </n-space>
       </div>
+      <n-pagination v-model:page="currentPage" :page-count="Math.ceil(users.length / pageSize)" />
     </div>
   </div>
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { reactive, ref, computed } from 'vue'
 import { apiAuth } from '@/plugins/axios'
 import Swal from 'sweetalert2'
 
 const users = reactive([])
+
+const currentPage = ref(1)
+const pageSize = 5
+const sliceUsers = computed(()=> {
+  return users.slice((currentPage.value * pageSize) - pageSize, (currentPage.value * pageSize))
+})
 
 // 刪除會員
 const del = async (_id, idx) => {
@@ -85,4 +92,8 @@ init()
     width: 80%;
   }
 
+  .n-pagination {
+    margin-top: 50px;
+    margin-left: 500px;
+  }
 </style>

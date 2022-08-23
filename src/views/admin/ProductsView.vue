@@ -45,8 +45,8 @@
               </tr>
             </thead>
             <tbody>
-              <template v-for='(product, idx) in products'>
-                <tr v-if='products.length > 0' :key='product._id'>
+              <template v-for='(product, idx) in sliceProducts'>
+                <tr v-if='sliceProducts.length > 0' :key='product._id'>
                   <td>
                       <n-avatar :size="100" object-fit="contain" color="rgba(255, 255, 255, 0)" :src="product.image" />
                     </td>
@@ -60,19 +60,26 @@
           </n-table>
         </n-space>
       </div>
+      <n-pagination v-model:page="currentPage" :page-count="Math.ceil(products.length / pageSize)" />
     </div>
   </div>
 
 </template>
 
 <script setup>
-import { reactive, ref } from "vue";
+import { reactive, ref, computed } from "vue";
 import Swal from 'sweetalert2'
 import { apiAuth } from '@/plugins/axios'
 const products = reactive([])
 const loading = ref(false)
 // form裡面要多一個 index(idx) 要修改表單內容比較方便
-const showModal = ref(false);
+const showModal = ref(false)
+
+const currentPage = ref(1)
+const pageSize = 10
+const sliceProducts = computed(()=> {
+  return products.slice((currentPage.value * pageSize) - pageSize, (currentPage.value * pageSize))
+})
 
 const options = [
   {
@@ -205,4 +212,8 @@ init()
     height: 100%;
   }
 
+  .n-pagination {
+    margin-top: 50px;
+    margin-left: 500px;
+  }
 </style>

@@ -17,8 +17,8 @@
               </tr>
             </thead>
             <tbody>
-              <template v-for='(order, idx) in orders'>
-                <tr v-if='orders.length > 0' :key='order._id'>
+              <template v-for='(order, idx) in sliceOrders'>
+                <tr v-if='sliceOrders.length > 0' :key='order._id'>
                   <td>{{order._id}}</td>
                   <td>{{ new Date(order.date).toLocaleDateString() }}</td>
                   <td>{{ order.user.account }}</td>
@@ -39,16 +39,23 @@
           </n-table>
         </n-space>
       </div>
+      <n-pagination v-model:page="currentPage" :page-count="Math.ceil(orders.length / pageSize)" />
     </div>
   </div>
 </template>
 
 <script setup>
-import { reactive } from 'vue'
+import { reactive, ref, computed } from 'vue'
 import { apiAuth } from '@/plugins/axios'
 import Swal from 'sweetalert2'
 
 const orders = reactive([])
+
+const currentPage = ref(1)
+const pageSize = 5
+const sliceOrders = computed(()=> {
+  return orders.slice((currentPage.value * pageSize) - pageSize, (currentPage.value * pageSize))
+})
 
 // 刪除訂單
 const del = async (_id, idx) => {
@@ -99,6 +106,11 @@ init()
   .ordersbox {
     margin: auto;
     width: 80%;
+  }
+
+  .n-pagination {
+    margin-top: 50px;
+    margin-left: 500px;
   }
 
 </style>

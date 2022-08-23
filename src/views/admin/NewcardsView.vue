@@ -43,8 +43,8 @@
               </tr>
             </thead>
             <tbody>
-              <template v-for='(newcard, idx) in newcards'>
-                <tr v-if='newcards.length > 0' :key='newcard._id'>
+              <template v-for='(newcard, idx) in sliceNewcards'>
+                <tr v-if='sliceNewcards.length > 0' :key='newcard._id'>
                   <td><img :src="newcard.image" /></td>
                   <td>{{ newcard.name }}</td>
                   <td style="white-space:pre">{{ newcard.description }}</td>
@@ -58,14 +58,22 @@
           </n-table>
         </n-space>
       </div>
+      <n-pagination v-model:page="currentPage" :page-count="Math.ceil(newcards.length / pageSize)" />
     </div>
   </div>
+  
 </template>
 
 <script setup>
-import { reactive, ref } from "vue";
+import { reactive, ref, computed } from "vue";
 import Swal from 'sweetalert2'
 import { apiAuth } from '@/plugins/axios'
+
+const currentPage = ref(1)
+const pageSize = 10
+const sliceNewcards = computed(()=> {
+  return newcards.slice((currentPage.value * pageSize) - pageSize, (currentPage.value * pageSize))
+})
 
 const types = [
   {
@@ -286,5 +294,10 @@ init()
 
   td img {
     height: 100%;
+  }
+
+  .n-pagination {
+    margin-top: 50px;
+    margin-left: 500px;
   }
 </style>
