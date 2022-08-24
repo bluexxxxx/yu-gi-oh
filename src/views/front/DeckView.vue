@@ -176,4 +176,10 @@ init()
     font-size: 1.5rem;
   }
 
+  @media (min-width:1400px) {
+    .n-card {
+      height: 500px;
+    }
+  }
+
 </style>

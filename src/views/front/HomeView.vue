@@ -30,7 +30,7 @@
         <div class="flex-content"></div>
       <n-grid-item class="order1">
         <div class="content">
-          <h3 class="monster-card">怪獸卡</h3>
+          <h3 class="monster-card font-size-2rem">怪獸卡</h3>
           <p>怪獸卡是戰場的主角！</p>
           <p>沒有持有任何《効果》的「通常怪獸」</p>
           <p>擁有特殊《効果》的「效果怪獸」</p>
@@ -50,13 +50,13 @@
       </n-grid-item>
       <n-grid-item class="order4">
         <div class="content">
-          <h3 class="magic-card">魔法卡</h3>
+          <h3 class="magic-card font-size-2rem">魔法卡</h3>
           <p>魔法卡《發動》後能夠發揮各種《効果》！在決鬥中不可或缺！</p>
         </div>
       </n-grid-item>
       <n-grid-item class="order5">
         <div class="content">
-          <h3 class="trap-card">陷阱卡</h3>
+          <h3 class="trap-card font-size-2rem">陷阱卡</h3>
           <p>雖然陷阱卡使用的時機有所限制，但若能加以善用的話，便有機會扭轉局勢！</p>
           <p>《發動》陷阱智取對手！</p>
         </div>
@@ -73,13 +73,13 @@
     <div id="content">
       <n-grid cols="1 s:2" responsive="screen">
         <n-grid-item class="order7">
-        <div class="content-img" >
+        <div class="content-img margin-bottom" >
           <img src="@/assets/card_see_01.png">
         </div>
       </n-grid-item>
       <n-grid-item class="order8">
         <div class="content monster-card">
-          <h3>怪獸卡</h3>
+          <h3 class="font-size-2rem">怪獸卡</h3>
             <li>
               <h4>① 卡名</h4>
               <p>在這位置上寫上了卡牌名稱。</p>
@@ -113,7 +113,7 @@
       </n-grid-item>
       <n-grid-item class="order9">
         <div class="content magic-card">
-          <h3>魔法卡</h3>
+          <h3 class="font-size-2rem">魔法卡</h3>
           <li>
             <h4>① 卡名</h4> 
             <p>在這位置上寫上了卡牌名稱。</p>
@@ -136,7 +136,7 @@
         </div>
       </n-grid-item>
       <n-grid-item class="order10">
-        <div class="content-img">
+        <div class="content-img margin-top">
           <img src="@/assets/card_see_02.png">
         </div>
       </n-grid-item>
@@ -148,7 +148,7 @@
       </n-grid-item>
       <n-grid-item  class="order12">
         <div class="content trap-card">
-          <h3>陷阱卡</h3>
+          <h3 class="font-size-2rem">陷阱卡</h3>
           <li>
             <h4>① 卡名</h4> 
             <p>在這位置上寫上了卡牌名稱。</p>
@@ -208,7 +208,7 @@ p {
 .title {
   text-align: center;
   color: white;
-  margin: 100px 0 50px 0;
+  margin: 30px 0 50px 0;
 }
 
 .small-title {
@@ -257,6 +257,11 @@ p {
 }
 
 
+.font-size-2rem {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
 .monster-card {
   color:#e49061;
 }
@@ -269,6 +274,13 @@ p {
   color:#ac1a75;
 }
 
+.margin-bottom {
+  margin-bottom: 100px;
+}
+
+.margin-top {
+  margin-top: 50px;
+}
 
 
 .content li {
@@ -363,11 +375,9 @@ p {
   color: aqua; 
 }
 
-@media (min-width:768px){
+@media (min-width:768px) {
 
   .n-carousel {
-  margin-top: 2%;
-  width: 100%;
   height: 450px;
 }
 }
@@ -375,7 +385,7 @@ p {
 
 
 
-@media (min-width:1400px){
+@media (min-width:1400px) {
 
   .n-carousel {
     margin-top: 2%;
