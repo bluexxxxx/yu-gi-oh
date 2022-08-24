@@ -297,7 +297,10 @@ init()
   }
 
   .n-pagination {
+    display: flex;
+    justify-content: center;
     margin-top: 50px;
-    margin-left: 500px;
+    margin-bottom: 50px;
+    font-size: 1.5rem;
   }
 </style>

@@ -105,7 +105,7 @@ init()
     width: 75%;
     margin: auto;
     text-align: center;
-    padding: 180px 0;
+    padding-top: 180px ;
   }
 
   .n-card {
@@ -169,8 +169,11 @@ init()
   }  
 
   .n-pagination {
-    float: right;
+    display: flex;
+    justify-content: center;
     margin-top: 50px;
+    margin-bottom: 50px;
+    font-size: 1.5rem;
   }
 
 </style>

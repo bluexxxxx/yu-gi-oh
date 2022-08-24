@@ -69,7 +69,7 @@ init()
 .container {
   width: 75%;
   margin: auto;
-  padding: 180px 0;
+  padding-top: 180px;
 }
 
 
@@ -177,8 +177,11 @@ h3 { font-family:YGO_Card_JP, serif; }
   gap:20px !important;
 }
 
-.n-pagination {
-  float: right;
-  margin-top: 50px;
-}
+  .n-pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    font-size: 1.5rem;
+  }
 </style>
