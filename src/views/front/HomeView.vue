@@ -16,20 +16,21 @@
   <div class="container">
     <div class="header">
       <div class="headerText">
-        <h2>遊戲王公式卡片遊戲是利用你的《卡組》來跟對手進行《決鬥》的卡牌遊戲!</h2>
-        <h2>遊戲的目的， 是從《手牌》中《召喚》出各式各樣的怪物， 魔法， 陷阱卡攻擊對手， </h2>
-        <h2>當對手的生命點數《LP》變為0時， 便可取得勝利。</h2>
+        <h1>規則說明</h1>
+        <p>遊戲王公式卡片遊戲是利用你的《卡組》來跟對手進行《決鬥》的卡牌遊戲!</p>
+        <p>遊戲的目的， 是從《手牌》中《召喚》出各式各樣的怪物， 魔法， 陷阱卡攻擊對手， </p>
+        <p>當對手的生命點數《LP》變為0時， 便可取得勝利。</p>
       </div>
     </div>
     <h1 class="title">卡牌種類</h1>
-    <h2 class="small-title">卡牌主要分為３種，分別為「怪獸卡」、「魔法卡」及「陷阱卡」。</h2>
+    <p class="small-title">卡牌主要分為３種，分別為「怪獸卡」、「魔法卡」及「陷阱卡」。</p>
     <div id="content">
       <n-grid cols="1 s:2" responsive="screen">
 
         <div class="flex-content"></div>
       <n-grid-item class="order1">
         <div class="content">
-          <h3>怪獸卡</h3>
+          <h3 class="monster-card">怪獸卡</h3>
           <p>怪獸卡是戰場的主角！</p>
           <p>沒有持有任何《効果》的「通常怪獸」</p>
           <p>擁有特殊《効果》的「效果怪獸」</p>
@@ -49,13 +50,13 @@
       </n-grid-item>
       <n-grid-item class="order4">
         <div class="content">
-          <h3>魔法卡</h3>
-          <p>魔法卡《發動》後能夠發揮各種《効果》 ！在決鬥中不可或缺！</p>
+          <h3 class="magic-card">魔法卡</h3>
+          <p>魔法卡《發動》後能夠發揮各種《効果》！在決鬥中不可或缺！</p>
         </div>
       </n-grid-item>
       <n-grid-item class="order5">
         <div class="content">
-          <h3>陷阱卡</h3>
+          <h3 class="trap-card">陷阱卡</h3>
           <p>雖然陷阱卡使用的時機有所限制，但若能加以善用的話，便有機會扭轉局勢！</p>
           <p>《發動》陷阱智取對手！</p>
         </div>
@@ -201,12 +202,12 @@ p {
 
 p {
   font-family: NotoSansTC-Medium;
-  font-size: 1rem;
+  font-size: 1.2rem;
 }
 
 .title {
   text-align: center;
-  color: bisque;
+  color: wheat;
   margin: 100px 0 50px 0;
 }
 
@@ -232,7 +233,7 @@ p {
 .headerText h1 {
   color: rgb(255, 255, 255);
   font-weight: bolder;
-  text-shadow: 8px 8px 10px rgb(7, 225, 241);
+  text-shadow: 8px 8px 6px #2b7d83;
 }
 
 .headerText h3 {
@@ -255,9 +256,19 @@ p {
   flex-direction: column;
 }
 
-.content h3,h4 {
-  color: white;
+
+.monster-card {
+  color:#e49061;
 }
+
+.magic-card {
+  color:#01947d;
+}
+
+.trap-card {
+  color:#ac1a75;
+}
+
 
 
 .content li {
@@ -266,6 +277,10 @@ p {
 
 .content p {
   color: whitesmoke;
+}
+
+.content h4 {
+  color: white;
 }
 
 .content-img {

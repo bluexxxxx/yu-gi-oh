@@ -21,16 +21,17 @@
       </div>
       <h1>{{ form.name }}</h1>
       <h2>觀念解析</h2>
-      <h4 >{{ form.description }}</h4>
+      <p >{{ form.description }}</p>
       <div v-if="form.playstyle!== 'undefined'">
         <h2>遊玩風格</h2>
-        <h4>{{ form.playstyle }}</h4>
+        <p>{{ form.playstyle }}</p>
       </div>
       <div v-if="form.decklogic !== 'undefined'">
         <h2 >其他資訊</h2>
-        <h4>{{ form.decklogic }}</h4>
+        <p>{{ form.decklogic }}</p>
       </div>
-      <h4><a :href="form.article" target="_blank">文章來源</a></h4>
+      <br>
+      <a :href="form.article" target="_blank">文章來源</a>
   </n-modal>
 </template>
 
@@ -142,19 +143,24 @@ init()
   }
 
   .n-modal h2 {
-    text-align: center;
     color: #f1ed56;
     font-size: 2rem;
+    margin-top: 40px;
   }
 
-  .n-modal h4 {
-    text-align: center;
+  .n-modal p {
+    font-family: NotoSansTC-Medium;
+    font-size: 1.2rem;
     margin-top: 0.5%;
+  }
+
+  .n-modal  a {
+    color: aqua;
     font-size: 1.2rem;
   }
 
-  .n-modal h4 a {
-    color: aqua;
+    .n-modal  a:hover {
+    color: deepskyblue;
   }
 
 
@@ -166,13 +172,5 @@ init()
     float: right;
     margin-top: 50px;
   }
-
-  @media (min-width: 1400px) { 
-  
-    .n-modal h4 {
-    white-space: pre;
-    }
-  }
-
 
 </style>

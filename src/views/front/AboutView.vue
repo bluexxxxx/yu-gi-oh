@@ -74,15 +74,10 @@ p {
 
 .title {
   text-align: center;
-  color: bisque;
+  color: wheat;
   margin: 100px 0 50px 0;
 }
 
-.small-title {
-  text-align: center;
-  color: white;
-  margin: -30px 0 50px 0;
-}
 
 .header {
   color: white;
@@ -96,15 +91,7 @@ p {
   text-align: center;
 }
 
-.headerText h1 {
-  /* font-size: 2.8rem; */
-  color: rgb(255, 255, 255);
-  font-weight: bolder;
-  text-shadow: 8px 8px 10px rgb(7, 225, 241);
-}
-
 .headerText h3 {
-  /* font-size: 2rem; */
   color: white;
   font-weight: 900;
 }
@@ -124,18 +111,9 @@ p {
   flex-direction: column;
 }
 
-.content h3,h4 {
-  color: white;
-}
-
-
-.content li {
-  list-style: none;
-}
 
 .content p {
   color: whitesmoke;
-  /* font-size: 25px; */
 }
 
 .content-img {
@@ -146,24 +124,6 @@ p {
 .content-img img {
   width: 100%;
   height: 100%;
-}
-
-.monster-card h4{
-  display: inline-block;
-  background-color:#e49061;
-  border-radius: 5px;
-}
-
-.magic-card h4{
-  display: inline-block;
-  background-color:#01947d;
-  border-radius: 5px;
-}
-
-.trap-card h4 {
-  display: inline-block;
-  background-color:#ac1a75;
-  border-radius: 5px;
 }
 
 
