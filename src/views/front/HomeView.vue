@@ -207,7 +207,7 @@ p {
 
 .title {
   text-align: center;
-  color: wheat;
+  color: white;
   margin: 100px 0 50px 0;
 }
 

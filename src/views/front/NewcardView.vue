@@ -166,7 +166,7 @@ init()
     width: 75%;
     margin: auto;
     text-align: center;
-    padding: 150px 0 0 0;
+    padding: 180px 0 0 0;
   }
 
 

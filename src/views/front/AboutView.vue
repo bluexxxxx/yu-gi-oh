@@ -64,7 +64,7 @@
 .container {
   width: 75%;
   margin: auto;
-  padding: 150px 0;
+  padding: 180px 0;
 }
 
 p {
@@ -74,7 +74,7 @@ p {
 
 .title {
   text-align: center;
-  color: wheat;
+  color: white;
   margin: 100px 0 50px 0;
 }
 

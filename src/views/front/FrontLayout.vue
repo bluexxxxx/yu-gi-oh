@@ -195,9 +195,7 @@
   }
 
   .logo img {
-    width: 100px;
-    height: 50px;
-    border-radius: 50%;
+    width: 180px;
   }
 
   nav .container {
@@ -289,10 +287,6 @@
       padding-right: calc(var(--section-gap) / 2);
     }
 
-    /* .logo {
-      margin-left: 300px;
-      margin-right: 500px;
-    } */
 
     header .wrapper {
       display: flex;
@@ -334,7 +328,7 @@ input {
 label {
   float: right;
   margin-left: 250px;
-  padding-right: 50px;
+  padding-right: 100px;
   line-height: 50px;
 }
 
@@ -381,7 +375,6 @@ label img {
 
   #logo {
     margin-left: 50px;
-    margin-right: 200px;
   }
     label {
       display: none;

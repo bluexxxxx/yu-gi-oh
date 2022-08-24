@@ -107,7 +107,7 @@ init()
   .container {
     width: 75%;
     margin: auto;
-    padding: 150px 0;
+    padding: 180px 0;
   }
 
   h1 {
