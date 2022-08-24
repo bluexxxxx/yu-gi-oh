@@ -5,7 +5,7 @@
         <div id="logo">
           <RouterLink to="/">
               <div class="logo">
-                <img src="@/assets/egg.png">
+                <img src="@/assets/logo.png">
               </div>
             </RouterLink>
         </div>
@@ -194,8 +194,8 @@
     width:100%;
   }
 
-  .logo img{
-    width: 50px;
+  .logo img {
+    width: 100px;
     height: 50px;
     border-radius: 50%;
   }
@@ -381,7 +381,7 @@ label img {
 
   #logo {
     margin-left: 50px;
-    margin-right: 280px;
+    margin-right: 200px;
   }
     label {
       display: none;
