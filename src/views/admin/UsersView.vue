@@ -14,12 +14,12 @@
               </tr>
             </thead>
             <tbody>
-              <template v-for='(user, idx) in sliceUsers'>
+              <template v-for='(user) in sliceUsers'>
                 <tr v-if='sliceUsers.length > 0' :key='user._id'>
                   <td>{{user._id}}</td>
                   <td>{{ user.account }}</td>
                   <td>
-                    <n-button type="error" @click="del(user._id, idx)">刪除</n-button>
+                    <n-button type="error" @click="del(user._id)">刪除</n-button>
                   </td>
                 </tr>
               </template>
@@ -46,7 +46,8 @@ const sliceUsers = computed(()=> {
 })
 
 // 刪除會員
-const del = async (_id, idx) => {
+const del = async (_id) => {
+  const idx = sliceUsers.value.findIndex(item => item._id === _id)
   try {
     await apiAuth.delete('/users/' + _id)
     Swal.fire({
@@ -54,7 +55,7 @@ const del = async (_id, idx) => {
         title: '成功',
         text: '刪除成功'
       })
-    users.splice(idx, 1)
+    sliceUsers.value.splice(idx, 1)
   } catch (error) {
     Swal.fire({
       icon: 'error',

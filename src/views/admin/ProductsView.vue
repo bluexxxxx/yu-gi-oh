@@ -45,7 +45,7 @@
               </tr>
             </thead>
             <tbody>
-              <template v-for='(product, idx) in sliceProducts'>
+              <template v-for='(product) in sliceProducts'>
                 <tr v-if='sliceProducts.length > 0' :key='product._id'>
                   <td>
                       <n-avatar :size="100" object-fit="contain" color="rgba(255, 255, 255, 0)" :src="product.image" />
@@ -53,7 +53,7 @@
                   <td>{{ product.name }}</td>
                   <td>{{ product.price }}</td>
                   <td>{{ product.description }}</td>
-                  <td><n-button type="info" @click="openDialog(product._id, idx)" :loading="loading"> 編輯 </n-button></td>
+                  <td><n-button type="info" @click="openDialog(product._id)" :loading="loading"> 編輯 </n-button></td>
                 </tr>
               </template>
             </tbody>
@@ -105,15 +105,16 @@ const form = reactive({
   submitting: false
 })
 
-const openDialog = (_id, idx) => {
+const openDialog = (_id) => {
+  const idx = sliceProducts.value.findIndex(item => item._id === _id)
   showModal.value = true;
   form._id = _id
   if (idx > -1) {
-    form.name = products[idx].name
-    form.price = products[idx].price
-    form.category = products[idx].category
-    form.description = products[idx].description
-    form.sell = products[idx].sell
+    form.name = sliceProducts.value[idx].name
+    form.price = sliceProducts.value[idx].price
+    form.category = sliceProducts.value[idx].category
+    form.description = sliceProducts.value[idx].description
+    form.sell = sliceProducts.value[idx].sell
 
   } else {
     form.name = ''

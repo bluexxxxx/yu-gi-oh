@@ -6,8 +6,8 @@
       <img src="@/assets/product_05.png">
     </div>
     <n-grid cols="2 s:4 l:6" responsive="screen">
-      <n-grid-item v-for="(newcard, idx) in sliceNewcards" :key='idx'>
-      <a @click="openDialog(newcard._id, idx)">
+      <n-grid-item v-for="newcard in sliceNewcards" :key='newcard._id'>
+      <a @click="openDialog(newcard._id)">
         <n-card>
           <template #cover>
             <img :src="newcard.image"/>
@@ -122,15 +122,16 @@ const form = reactive({
   showModal: false
 })
 
-const openDialog = (_id, idx) => {
+const openDialog = (_id) => {
+  const idx = sliceNewcards.value.findIndex(item => item._id === _id)
   showModal.value = true
   form._id = _id
   if (idx > -1) {
-    form.name =newcards[idx].name
-    form.description =newcards[idx].description
-    form.image =newcards[idx].image
-    form.type =newcards[idx].type
-    form.attr=newcards[idx].attr
+    form.name =sliceNewcards.value[idx].name
+    form.description =sliceNewcards.value[idx].description
+    form.image =sliceNewcards.value[idx].image
+    form.type =sliceNewcards.value[idx].type
+    form.attr=sliceNewcards.value[idx].attr
   }
   form.idx = idx
   form.showModal = true
@@ -223,6 +224,10 @@ init()
     background-color: rgb(36,30,57) !important;
   }
 
+  .modal-card {
+    margin-top: 150px;
+  }
+
   .modal-card >>> .n-card {
     background: transparent !important;
   }
@@ -263,7 +268,7 @@ init()
 
 .description {
   width: 100%;
-  height: 600px;
+  height: 400px;
   padding: 20px;
   box-sizing: border-box;
   background: linear=linear-gradient( #010101, #040207);

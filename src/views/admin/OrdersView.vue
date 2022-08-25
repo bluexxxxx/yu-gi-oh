@@ -17,7 +17,7 @@
               </tr>
             </thead>
             <tbody>
-              <template v-for='(order, idx) in sliceOrders'>
+              <template v-for='(order) in sliceOrders'>
                 <tr v-if='sliceOrders.length > 0' :key='order._id'>
                   <td>{{order._id}}</td>
                   <td>{{ new Date(order.date).toLocaleDateString() }}</td>
@@ -31,7 +31,7 @@
                     </ul>
                   </td>
                   <td>
-                    <n-button type="error" @click="del(order._id, idx)">刪除</n-button>
+                    <n-button type="error" @click="del(order._id)">刪除</n-button>
                   </td>
                 </tr>
               </template>
@@ -58,7 +58,8 @@ const sliceOrders = computed(()=> {
 })
 
 // 刪除訂單
-const del = async (_id, idx) => {
+const del = async (_id) => {
+  const idx = sliceOrders.value.findIndex(item => item._id === _id)
   try {
     await apiAuth.delete('/orders/' + _id)
     Swal.fire({
@@ -66,7 +67,7 @@ const del = async (_id, idx) => {
         title: '成功',
         text: '刪除成功'
       })
-    orders.splice(idx, 1)
+    sliceOrders.value.splice(idx, 1)
   } catch (error) {
     Swal.fire({
       icon: 'error',

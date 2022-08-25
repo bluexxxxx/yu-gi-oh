@@ -49,13 +49,13 @@
               </tr>
             </thead>
             <tbody>
-              <template v-for='(deck, idx) in sliceDecks'>
+              <template v-for='(deck) in sliceDecks'>
                 <tr v-if='sliceDecks.length > 0' :key='deck._id'>
                   <td><img :src="deck.image" /></td>
                   <td>{{ deck.name }}</td>
                   <td style="white-space:pre">{{ deck.description }}</td>
-                  <td><n-button type="info" @click="openDialog(deck._id, idx)"> 編輯 </n-button></td>
-                  <td><n-button type="error" @click="del(deck._id, idx)"> 刪除 </n-button></td>
+                  <td><n-button type="info" @click="openDialog(deck._id)"> 編輯 </n-button></td>
+                  <td><n-button type="error" @click="del(deck._id)"> 刪除 </n-button></td>
                 </tr>
               </template>
             </tbody>
@@ -95,15 +95,16 @@ const form = reactive({
   submitting: false
 })
 
-const openDialog = (_id, idx) => {
+const openDialog = (_id) => {
+  const idx = sliceDecks.value.findIndex(item => item._id === _id)
   showModal.value = true;
   form._id = _id
   if (idx > -1) {
-    form.name = decks[idx].name
-    form.description = decks[idx].description
-    form.playstyle = decks[idx].playstyle
-    form.decklogic = decks[idx].decklogic
-    form.article = decks[idx].article
+    form.name = sliceDecks.value[idx].name
+    form.description = sliceDecks.value[idx].description
+    form.playstyle = sliceDecks.value[idx].playstyle
+    form.decklogic = sliceDecks.value[idx].decklogic
+    form.article = sliceDecks.value[idx].article
 
   } else {
     form.name = ''
@@ -163,7 +164,8 @@ const submitForm = async () => {
 }
 
 // 刪除專欄
-const del = async (_id, idx) => {
+const del = async (_id) => {
+  const idx = sliceDecks.value.findIndex(item => item._id === _id)
   try {
     await apiAuth.delete('/decks/' + _id)
     Swal.fire({
@@ -171,7 +173,7 @@ const del = async (_id, idx) => {
         title: '成功',
         text: '刪除成功'
       })
-    decks.splice(idx, 1)
+    sliceDecks.value.splice(idx, 1)
   } catch (error) {
     Swal.fire({
       icon: 'error',

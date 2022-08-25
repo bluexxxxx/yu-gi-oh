@@ -43,15 +43,15 @@
               </tr>
             </thead>
             <tbody>
-              <template v-for='(newcard, idx) in sliceNewcards'>
+              <template v-for='(newcard) in sliceNewcards'>
                 <tr v-if='sliceNewcards.length > 0' :key='newcard._id'>
                   <td><img :src="newcard.image" /></td>
                   <td>{{ newcard.name }}</td>
                   <td style="white-space:pre">{{ newcard.description }}</td>
                   <td>{{newcard.type}}</td>
                   <td>{{newcard.attr}}</td>
-                  <td><n-button type="info" @click="openDialog(newcard._id, idx)"> 編輯 </n-button></td>
-                  <td><n-button type="error" @click="del(newcard._id, idx)">刪除</n-button></td>
+                  <td><n-button type="info" @click="openDialog(newcard._id)"> 編輯 </n-button></td>
+                  <td><n-button type="error" @click="del(newcard._id)">刪除</n-button></td>
                 </tr>
               </template>
             </tbody>
@@ -159,7 +159,8 @@ const showModal = ref(false);
 
 
 // 刪除卡片情報
-const del = async (_id, idx) => {
+const del = async (_id) => {
+  const idx = sliceNewcards.value.findIndex(item => item._id === _id)
   try {
     await apiAuth.delete('/newcards/' + _id)
     Swal.fire({
@@ -167,7 +168,7 @@ const del = async (_id, idx) => {
         title: '成功',
         text: '刪除成功'
       })
-    newcards.splice(idx, 1)
+    sliceNewcards.value.splice(idx, 1)
   } catch (error) {
     Swal.fire({
       icon: 'error',
@@ -190,14 +191,15 @@ const form = reactive({
   submitting: false
 })
 
-const openDialog = (_id, idx) => {
+const openDialog = (_id) => {
+  const idx = sliceNewcards.value.findIndex(item => item._id === _id)
   showModal.value = true;
   form._id = _id
   if (idx > -1) {
-    form.name = newcards[idx].name
-    form.description = newcards[idx].description
-    form.type = newcards[idx].type
-    form.attr = newcards[idx].attr
+    form.name = sliceNewcards.value[idx].name
+    form.description = sliceNewcards.value[idx].description
+    form.type = sliceNewcards.value[idx].type
+    form.attr = sliceNewcards.value[idx].attr
 
   } else {
     form.name = ''

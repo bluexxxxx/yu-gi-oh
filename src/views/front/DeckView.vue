@@ -2,8 +2,8 @@
   <div class="container">
     <h1>卡組專欄</h1>
     <n-grid cols="1 s:2 l:3" responsive="screen" class="mg-t">
-      <n-grid-item v-for="(deck, idx) in sliceDecks" :key='idx'>
-      <a @click="openDialog(deck._id, idx)">
+      <n-grid-item v-for="(deck) in sliceDecks" :key='deck._id'>
+      <a @click="openDialog(deck._id)">
         <n-card>
           <template #cover>
             <img :src="deck.image"/>
@@ -62,16 +62,17 @@ const form = reactive({
   showModal: false
 })
 
-const openDialog = (_id, idx) => {
+const openDialog = (_id) => {
+  const idx = sliceDecks.value.findIndex(item => item._id === _id)
   showModal.value = true
   form._id = _id
   if (idx > -1) {
-    form.name =decks[idx].name
-    form.description =decks[idx].description
-    form.playstyle = decks[idx].playstyle
-    form.decklogic = decks[idx].decklogic
-    form.image =decks[idx].image
-    form.article=decks[idx].article
+    form.name =sliceDecks.value[idx].name
+    form.description =sliceDecks.value[idx].description
+    form.playstyle = sliceDecks.value[idx].playstyle
+    form.decklogic = sliceDecks.value[idx].decklogic
+    form.image =sliceDecks.value[idx].image
+    form.article=sliceDecks.value[idx].article
   }
   form.idx = idx
   form.showModal = true
