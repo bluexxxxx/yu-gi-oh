@@ -43,6 +43,7 @@
                 <th>價格</th>
                 <th>描述</th>
                 <th>編輯</th>
+                <th>刪除</th>
               </tr>
             </thead>
             <tbody>
@@ -56,6 +57,9 @@
                   <td>{{ product.description }}</td>
                   <td v-if="currentPage === 1"><n-button type="info" @click="openDialog(product._id, idx)" :loading="loading"> 編輯 </n-button></td>
                   <td v-if="currentPage > 1"><n-button type="info" @click="openDialog(product._id, idx + ((currentPage-1) * pageSize))" :loading="loading"> 編輯 </n-button></td>
+
+                  <td v-if="currentPage === 1"><n-button type="error" @click="del(product._id, idx)" :loading="loading"> 刪除 </n-button></td>
+                  <td v-if="currentPage > 1"><n-button type="error" @click="del(product._id, idx + ((currentPage-1) * pageSize))" :loading="loading"> 刪除 </n-button></td>
                 </tr>
               </template>
             </tbody>
@@ -106,6 +110,24 @@ const form = reactive({
   valid: false,
   submitting: false
 })
+
+const del = async (_id, idx) => {
+  try {
+    await apiAuth.delete('/products/' + _id)
+    Swal.fire({
+        icon: 'success',
+        title: '成功',
+        text: '刪除成功'
+      })
+    products.splice(idx, 1)
+  } catch (error) {
+    Swal.fire({
+      icon: 'error',
+      title: '失敗',
+      text: error.isAxiosError ? error.response.data.message : error.message
+    })
+  }
+}
 
 const openDialog = (_id, idx) => {
   showModal.value = true;

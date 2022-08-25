@@ -1,6 +1,6 @@
 <script setup>
 import { NConfigProvider } from 'naive-ui'
-import { useUserStore } from './stores/user';
+import { useUserStore } from './stores/user'
 
 useUserStore().getUser()
 
@@ -14,14 +14,14 @@ const themeOverrides = {
   Menu : {
     itemTextColor: '#fff',
   },
-  Table : {
-    tdColor:'#d1dfe7',
-    thColor:'#173446',
-    tdColorStriped:'#fdfdfb',
-    borderColor:'#5e6160',
-    thTextColor:'#cdedff',
-    tdTextColor:'#112797'
-  },
+  // Table : {
+  //   tdColor:'#d1dfe7',
+  //   thColor:'#173446',
+  //   tdColorStriped:'#fdfdfb',
+  //   borderColor:'#5e6160',
+  //   thTextColor:'#cdedff',
+  //   tdTextColor:'#112797'
+  // },
   Pagination: {
     itemTextColor: '#fff',
     itemTextColorActive: '#f29766',
@@ -92,6 +92,10 @@ nav a:first-of-type {
   .n-back-top {
   right: calc(10px) !important;
 }
+
+
+
+
 
 @media (min-width: 1024px) {
   header {

@@ -24,8 +24,8 @@
             <n-input type='textarea' autosize v-model:value='form.playstyle' placeholder="請輸入遊玩風格"/>
           </n-form-item>
 
-          <n-form-item label="組牌邏輯">
-            <n-input type='textarea' autosize v-model:value='form.decklogic' placeholder="請輸入組牌邏輯"/>
+          <n-form-item label="其他資訊">
+            <n-input type='textarea' autosize v-model:value='form.decklogic' placeholder="請輸入其他資訊"/>
           </n-form-item>
           
           <n-form-item label="文章來源">

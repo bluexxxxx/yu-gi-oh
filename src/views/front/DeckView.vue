@@ -119,8 +119,17 @@ init()
 
   .n-card:hover {
     cursor: pointer;
-    border: 2px solid rgb(157,195,30);
+    /* border: 2px solid rgb(157,195,30); */
+    animation: shiny 3s infinite;
   }
+
+  @keyframes shiny{
+    0%{ border:2px solid rgb(157,195,30); }
+    25%{ border:2px solid rgba(157,195,30,0.4); }
+    50%{ border:2px solid rgb(157,195,30);}
+    75%{ border:2px solid  rgba(157,195,30,0.4); }
+    100%{ border:2px solid rgb(157,195,30);}
+}
 
   .n-card h1 {
     margin-top: 5%;
@@ -128,7 +137,7 @@ init()
 
   .n-modal h1 {
     color: deepskyblue;
-    margin-top: -0.1%;
+    margin-top: 2%;
   }
 
   .deck_image {
@@ -149,17 +158,21 @@ init()
     color: #f1ed56;
     font-size: 2rem;
     margin-top: 40px;
+    padding:0 20%;
   }
 
   .n-modal p {
     font-family: NotoSansTC-Medium;
     font-size: 1.2rem;
     margin-top: 0.5%;
+    padding:0 20%;
+    line-height: 2.5rem;
   }
 
   .n-modal  a {
     color: aqua;
     font-size: 1.2rem;
+    padding: 0 20%;
   }
 
     .n-modal  a:hover {
