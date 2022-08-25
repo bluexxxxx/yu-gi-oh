@@ -5,30 +5,31 @@
       <n-button type="primary" @click="openDialog('', -1)">
         新增商品
       </n-button>
-      <n-modal v-model:show="showModal" preset="dialog" title="新增商品">
-          <n-form v-model="form.valid" @submit.prevent='submitForm'>
-            <n-form-item label="圖片">
-              <n-upload v-model:file-list='form.image' list-type="image-card">
-                  <n-button>點擊上傳</n-button>
-              </n-upload>
-            </n-form-item>
-            <n-form-item label="商品名稱">
-              <n-input v-model:value='form.name' placeholder="請輸入商品名稱"/>
-            </n-form-item>
-            <n-form-item label="商品價格">
-              <n-input-number v-model:value='form.price' placeholder="請輸入商品價格" />
-            </n-form-item>
-            <h4>請選擇商品類型</h4>
-            <n-select v-model:value="form.category" :options="options" />
-            <n-form-item label="商品描述">
-              <n-input v-model:value='form.description' placeholder="請輸入商品描述"/>
-            </n-form-item>
-            <n-form-item label="上架">
-              <n-switch v-model:value='form.sell'/>是否上架
-            </n-form-item>
-            <n-button type="primary" attr-type="submit" @click="showModal=false">
-              確認
-            </n-button>
+      <n-modal v-model:show="showModal" preset="dialog">
+        <h2>{{ form._id.length > 0 ? '編輯商品' : '新增商品' }} </h2> 
+        <n-form v-model="form.valid" @submit.prevent='submitForm'>
+          <n-form-item label="圖片">
+            <n-upload v-model:file-list='form.image' list-type="image-card">
+                <n-button>點擊上傳</n-button>
+            </n-upload>
+          </n-form-item>
+          <n-form-item label="商品名稱">
+            <n-input v-model:value='form.name' placeholder="請輸入商品名稱"/>
+          </n-form-item>
+          <n-form-item label="商品價格">
+            <n-input-number v-model:value='form.price' placeholder="請輸入商品價格" />
+          </n-form-item>
+          <h4>請選擇商品類型</h4>
+          <n-select v-model:value="form.category" :options="options" />
+          <n-form-item label="商品描述">
+            <n-input v-model:value='form.description' placeholder="請輸入商品描述"/>
+          </n-form-item>
+          <n-form-item label="上架">
+            <n-switch v-model:value='form.sell'/>是否上架
+          </n-form-item>
+          <n-button type="primary" attr-type="submit" @click="showModal=false">
+            確認
+          </n-button>
         </n-form>
       </n-modal>
       <n-divider />
@@ -45,7 +46,7 @@
               </tr>
             </thead>
             <tbody>
-              <template v-for='(product) in sliceProducts'>
+              <template v-for='(product, idx) in sliceProducts'>
                 <tr v-if='sliceProducts.length > 0' :key='product._id'>
                   <td>
                       <n-avatar :size="100" object-fit="contain" color="rgba(255, 255, 255, 0)" :src="product.image" />
@@ -53,7 +54,8 @@
                   <td>{{ product.name }}</td>
                   <td>{{ product.price }}</td>
                   <td>{{ product.description }}</td>
-                  <td><n-button type="info" @click="openDialog(product._id)" :loading="loading"> 編輯 </n-button></td>
+                  <td v-if="currentPage === 1"><n-button type="info" @click="openDialog(product._id, idx)" :loading="loading"> 編輯 </n-button></td>
+                  <td v-if="currentPage > 1"><n-button type="info" @click="openDialog(product._id, idx + ((currentPage-1) * pageSize))" :loading="loading"> 編輯 </n-button></td>
                 </tr>
               </template>
             </tbody>
@@ -76,7 +78,7 @@ const loading = ref(false)
 const showModal = ref(false)
 
 const currentPage = ref(1)
-const pageSize = 10
+const pageSize = 5
 const sliceProducts = computed(()=> {
   return products.slice((currentPage.value * pageSize) - pageSize, (currentPage.value * pageSize))
 })
@@ -105,16 +107,15 @@ const form = reactive({
   submitting: false
 })
 
-const openDialog = (_id) => {
-  const idx = sliceProducts.value.findIndex(item => item._id === _id)
+const openDialog = (_id, idx) => {
   showModal.value = true;
   form._id = _id
   if (idx > -1) {
-    form.name = sliceProducts.value[idx].name
-    form.price = sliceProducts.value[idx].price
-    form.category = sliceProducts.value[idx].category
-    form.description = sliceProducts.value[idx].description
-    form.sell = sliceProducts.value[idx].sell
+    form.name = products[idx].name
+    form.price = products[idx].price
+    form.category = products[idx].category
+    form.description = products[idx].description
+    form.sell = products[idx].sell
 
   } else {
     form.name = ''

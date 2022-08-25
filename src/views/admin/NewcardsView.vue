@@ -5,7 +5,8 @@
       <n-button type="primary" @click="openDialog('', -1)">
         新增卡片
       </n-button>
-      <n-modal v-model:show="showModal" preset="dialog" title="新增卡片">
+      <n-modal v-model:show="showModal" preset="dialog">
+        <h2>{{ form._id.length > 0 ? '編輯新卡' : '新增新卡' }} </h2> 
         <n-form v-model="form.valid" @submit.prevent='submitForm'>
             <n-form-item label="圖片">
               <n-upload v-model:file-list='form.image' list-type="image-card">
@@ -43,15 +44,19 @@
               </tr>
             </thead>
             <tbody>
-              <template v-for='(newcard) in sliceNewcards'>
+              <template v-for='(newcard, idx) in sliceNewcards'>
                 <tr v-if='sliceNewcards.length > 0' :key='newcard._id'>
                   <td><img :src="newcard.image" /></td>
                   <td>{{ newcard.name }}</td>
                   <td style="white-space:pre">{{ newcard.description }}</td>
                   <td>{{newcard.type}}</td>
                   <td>{{newcard.attr}}</td>
-                  <td><n-button type="info" @click="openDialog(newcard._id)"> 編輯 </n-button></td>
-                  <td><n-button type="error" @click="del(newcard._id)">刪除</n-button></td>
+
+                  <td v-if="currentPage === 1"><n-button type="info" @click="openDialog(newcard._id, idx)" :loading="loading"> 編輯 </n-button></td>
+                  <td v-if="currentPage > 1"><n-button type="info" @click="openDialog(newcard._id, idx + ((currentPage-1) * pageSize))" :loading="loading"> 編輯 </n-button></td>
+
+                  <td v-if="currentPage === 1"><n-button type="error" @click="del(newcard._id, idx)" :loading="loading"> 刪除 </n-button></td>
+                  <td v-if="currentPage > 1"><n-button type="error" @click="del(newcard._id, idx + ((currentPage-1) * pageSize))" :loading="loading"> 刪除 </n-button></td>
                 </tr>
               </template>
             </tbody>
@@ -159,8 +164,7 @@ const showModal = ref(false);
 
 
 // 刪除卡片情報
-const del = async (_id) => {
-  const idx = sliceNewcards.value.findIndex(item => item._id === _id)
+const del = async (_id, idx) => {
   try {
     await apiAuth.delete('/newcards/' + _id)
     Swal.fire({
@@ -168,7 +172,7 @@ const del = async (_id) => {
         title: '成功',
         text: '刪除成功'
       })
-    sliceNewcards.value.splice(idx, 1)
+    newcards.splice(idx, 1)
   } catch (error) {
     Swal.fire({
       icon: 'error',
@@ -191,15 +195,14 @@ const form = reactive({
   submitting: false
 })
 
-const openDialog = (_id) => {
-  const idx = sliceNewcards.value.findIndex(item => item._id === _id)
+const openDialog = (_id, idx) => {
   showModal.value = true;
   form._id = _id
   if (idx > -1) {
-    form.name = sliceNewcards.value[idx].name
-    form.description = sliceNewcards.value[idx].description
-    form.type = sliceNewcards.value[idx].type
-    form.attr = sliceNewcards.value[idx].attr
+    form.name = newcards[idx].name
+    form.description = newcards[idx].description
+    form.type = newcards[idx].type
+    form.attr = newcards[idx].attr
 
   } else {
     form.name = ''
