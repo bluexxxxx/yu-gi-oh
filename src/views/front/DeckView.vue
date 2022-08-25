@@ -31,7 +31,9 @@
         <p>{{ form.decklogic }}</p>
       </div>
       <br>
+      <div v-if="form.article.length > 0">
       <a :href="form.article" target="_blank">文章來源</a>
+      </div>
   </n-modal>
 </template>
 
