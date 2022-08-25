@@ -8,7 +8,7 @@
     <n-grid cols="2 s:4 l:6" responsive="screen">
       <n-grid-item v-for="newcard in sliceNewcards" :key='newcard._id'>
       <a @click="openDialog(newcard._id)">
-        <n-card>
+        <n-card class="shiny">
           <template #cover>
             <img :src="newcard.image"/>
           </template>
@@ -90,7 +90,7 @@ import { api } from '@/plugins/axios'
 import { NConfigProvider } from 'naive-ui'
 
 const currentPage = ref(1)
-const pageSize = 24
+const pageSize = 12
 const sliceNewcards = computed(()=> {
   return newcards.slice((currentPage.value * pageSize) - pageSize, (currentPage.value * pageSize))
 })
@@ -171,13 +171,18 @@ init()
   }
 
 
-  .n-card { 
+  .shiny { 
     border: 2px solid rgb(153,153,151) ;
     color: white;
   }
 
+  .n-card {
+    color: white;
+    
+  }
 
-  .n-card:hover {
+
+  .shiny:hover {
     cursor: pointer;
     transition: 0.5s;
     /* border: 2px solid rgb(157,195,30); */
@@ -271,7 +276,7 @@ init()
   height: 400px;
   padding: 20px;
   box-sizing: border-box;
-  background: linear=linear-gradient( #010101, #040207);
+  background: black;
 }
 
 
