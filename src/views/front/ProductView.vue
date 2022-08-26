@@ -1,7 +1,7 @@
 <template>
   <div class='container'>
     <h1>商品專區</h1>
-    <n-grid cols="1 s:2 l:3" responsive="screen" class="mg-t" >
+    <n-grid cols="1 s:2 l:4" responsive="screen" class="mg-t" >
       <n-grid-item v-for="(product, idx) in sliceProducts" :key='idx'>
           <div class="n-card-container">
             <n-card v-if='sliceProducts.length>0' :key='product._id'>
@@ -38,7 +38,7 @@ import { useUserStore } from '@/stores/user'
 const user = useUserStore()
 
 const currentPage = ref(1)
-const pageSize = 6
+const pageSize = 8
 const sliceProducts = computed(()=> {
   return products.slice((currentPage.value * pageSize) - pageSize, (currentPage.value * pageSize))
 })
@@ -78,15 +78,19 @@ init()
   top: 2px;
   left: 2px;
   width: calc(100% - 4px);
-  height: calc(100% - 4px);
+  height: calc(550px - 4px);
   background: black;
   border-radius: 0 30px 0 30px;
   clip-path: polygon(30px 0%, calc(100% - 30px) 0%, 100% 0, 100% calc(100% - 30px), calc(100% - 30px) 100%, 0 100%, 0% calc(100% - 30px), 0% 30px);
 }
 
+.n-card img {
+  height: 300px;
+}
+
 .n-card-container {
   position: relative;
-  height: 800px;
+  height: 550px;
   box-sizing: border-box;
   display: flex;
   width: 100%;

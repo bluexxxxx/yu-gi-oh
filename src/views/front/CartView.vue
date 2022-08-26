@@ -21,7 +21,7 @@
               </thead>
               <tbody v-if='cart.length > 0'>
                   <tr  v-for='(item, idx) in cart'  :key='item._id'>
-                    <td class="picture"><n-avatar :size="80" object-fit="cover" :src="item.product.image" /></td>
+                    <td class="picture"><n-avatar :size="80" object-fit="contain" color="rgba(255, 255, 255, 0)" :src="item.product.image" /></td>
                     <td>{{ item.product.name }}</td>
                     <td>{{ item.product.price }}</td>
                     <td>
