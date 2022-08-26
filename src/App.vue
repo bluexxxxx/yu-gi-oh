@@ -34,7 +34,7 @@ const themeOverrides = {
 </script>
 
 <template>
-  <n-config-provider :theme-overrides="themeOverrides">
+  <n-config-provider :theme-overrides="themeOverrides" :breakpoints="{ xs: 0, s: 768, m: 1024, l: 1280, xl: 1536, xxl: 1920 }">
     <header>
         <!-- <nav>
           <RouterLink to="/">Home</RouterLink>
