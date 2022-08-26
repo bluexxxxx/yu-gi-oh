@@ -4,7 +4,7 @@
     <n-grid cols="1 s:2 l:3" responsive="screen" class="mg-t">
       <n-grid-item v-for="(deck) in sliceDecks" :key='deck._id'>
       <a @click="openDialog(deck._id)">
-        <n-card>
+        <n-card >
           <template #cover>
             <img :src="deck.image"/>
           </template>

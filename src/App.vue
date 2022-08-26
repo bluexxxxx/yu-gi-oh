@@ -2,6 +2,10 @@
 import { NConfigProvider } from 'naive-ui'
 import { useUserStore } from './stores/user'
 
+import AOS from 'aos';
+import 'aos/dist/aos.css'; 
+AOS.init();
+
 useUserStore().getUser()
 
 const themeOverrides = {

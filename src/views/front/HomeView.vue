@@ -39,12 +39,12 @@
         </div>
       </n-grid-item>
       <n-grid-item class="order2">
-        <div class="content-img">
+        <div class="content-img" data-aos="fade-left" data-aos-duration="2000">
           <img src="@/assets/type_of_card_01.png">
         </div>
       </n-grid-item>
       <n-grid-item class="order3">
-        <div class="content-img">
+        <div class="content-img" data-aos="fade-right" data-aos-duration="2000">
           <img src="@/assets/type_of_card_02.png">
         </div>
       </n-grid-item>
@@ -62,7 +62,7 @@
         </div>
       </n-grid-item>
       <n-grid-item class="order6">
-        <div class="content-img">
+        <div class="content-img" data-aos="fade-left" data-aos-duration="2000">
           <img src="@/assets/type_of_card_03.png">
         </div>
       </n-grid-item>
@@ -73,7 +73,7 @@
     <div id="content">
       <n-grid cols="1 s:2" responsive="screen">
         <n-grid-item class="order7">
-        <div class="content-img margin-bottom" >
+        <div class="content-img margin-bottom" data-aos="fade-right" data-aos-duration="2000" >
           <img src="@/assets/card_see_01.png">
         </div>
       </n-grid-item>
@@ -136,13 +136,13 @@
         </div>
       </n-grid-item>
       <n-grid-item class="order10">
-        <div class="content-img margin-top">
+        <div class="content-img margin-top" data-aos="fade-left" data-aos-duration="2000">
           <img src="@/assets/card_see_02.png">
         </div>
       </n-grid-item>
 
       <n-grid-item class="order11">
-        <div class="content-img">
+        <div class="content-img" data-aos="fade-right" data-aos-duration="2000">
           <img src="@/assets/card_see_03.png">
         </div>
       </n-grid-item>
@@ -458,6 +458,5 @@ p {
     order:12;
   }
 }
-
 
 </style>
