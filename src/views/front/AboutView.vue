@@ -12,7 +12,7 @@
       <div id="content">
         <n-grid cols="1 m:2" responsive="screen">
           <n-grid-item class="order1">
-          <div class="content-img" data-aos="flip-left" data-aos-duration="2000" >
+          <div class="content-img" data-aos="flip-left" data-aos-duration="1000" >
             <img src="@/assets/about_01.jpg">
           </div>
         </n-grid-item>
@@ -36,13 +36,13 @@
           </div>
         </n-grid-item>
         <n-grid-item class="order4">
-          <div class="content-img" data-aos="flip-right" data-aos-duration="2000" >
+          <div class="content-img" data-aos="flip-right" data-aos-duration="1000" >
             <img src="@/assets/about_02.jpg">
           </div>
         </n-grid-item>
 
         <n-grid-item class="order5">
-          <div class="content-img" data-aos="flip-left" data-aos-duration="2000" >
+          <div class="content-img" data-aos="flip-left" data-aos-duration="1000" >
             <img src="@/assets/about_03.jpg">
           </div>
         </n-grid-item>

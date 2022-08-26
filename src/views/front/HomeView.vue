@@ -17,9 +17,12 @@
     <div class="header">
       <div class="headerText">
         <h1>規則說明</h1>
-        <p>遊戲王公式卡片遊戲是利用你的《卡組》來跟對手進行《決鬥》的卡牌遊戲!</p>
-        <p>遊戲的目的， 是從《手牌》中《召喚》出各式各樣的怪物， 魔法， 陷阱卡攻擊對手， </p>
-        <p>當對手的生命點數《LP》變為0時， 便可取得勝利。</p>
+        <p>遊戲王公式卡片遊戲是利用你的《卡組》來跟對手</p>
+        <p>進行《決鬥》的卡牌遊戲！</p>
+        <p>遊戲的目的，是從《手牌》中《召喚》</p>
+        <p>各式各樣的怪物、魔法、陷阱卡攻擊對手，</p>
+        <p>當對手的生命點數《LP》變為0時，</p>
+        <p>便可取得勝利。</p>
       </div>
     </div>
     <h1 class="title">卡牌種類</h1>
@@ -39,12 +42,12 @@
         </div>
       </n-grid-item>
       <n-grid-item class="order2">
-        <div class="content-img" data-aos="fade-left" data-aos-duration="2000">
+        <div class="content-img" data-aos="fade-left" data-aos-duration="1000">
           <img src="@/assets/type_of_card_01.png">
         </div>
       </n-grid-item>
       <n-grid-item class="order3">
-        <div class="content-img" data-aos="fade-right" data-aos-duration="2000">
+        <div class="content-img" data-aos="fade-right" data-aos-duration="1000">
           <img src="@/assets/type_of_card_02.png">
         </div>
       </n-grid-item>
@@ -62,7 +65,7 @@
         </div>
       </n-grid-item>
       <n-grid-item class="order6">
-        <div class="content-img" data-aos="fade-left" data-aos-duration="2000">
+        <div class="content-img" data-aos="fade-left" data-aos-duration="1000">
           <img src="@/assets/type_of_card_03.png">
         </div>
       </n-grid-item>
@@ -73,7 +76,7 @@
     <div id="content">
       <n-grid cols="1 s:2" responsive="screen">
         <n-grid-item class="order7">
-        <div class="content-img margin-bottom" data-aos="fade-right" data-aos-duration="2000" >
+        <div class="content-img margin-bottom" data-aos="fade-right" data-aos-duration="1000" >
           <img src="@/assets/card_see_01.png">
         </div>
       </n-grid-item>
@@ -136,13 +139,13 @@
         </div>
       </n-grid-item>
       <n-grid-item class="order10">
-        <div class="content-img margin-top" data-aos="fade-left" data-aos-duration="2000">
+        <div class="content-img margin-top" data-aos="fade-left" data-aos-duration="1000">
           <img src="@/assets/card_see_02.png">
         </div>
       </n-grid-item>
 
       <n-grid-item class="order11">
-        <div class="content-img" data-aos="fade-right" data-aos-duration="2000">
+        <div class="content-img" data-aos="fade-right" data-aos-duration="1000">
           <img src="@/assets/card_see_03.png">
         </div>
       </n-grid-item>
@@ -236,9 +239,8 @@ p {
   text-shadow: 8px 8px 6px #2b7d83;
 }
 
-.headerText h3 {
-  color: white;
-  font-weight: 900;
+.headerText p {
+  font-size: 1rem;
 }
 
 #content {
@@ -250,12 +252,10 @@ p {
   height: 450px;
   backdrop-filter: blur(50px);
   padding: 0 20px;
-  margin-bottom: 50px;
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
-
 
 .font-size-2rem {
   font-size: 2rem;
@@ -289,6 +289,7 @@ p {
 
 .content p {
   color: whitesmoke;
+  font-size: 15px;
 }
 
 .content h4 {
@@ -402,9 +403,18 @@ p {
     font-size: 3rem;
   }
 
+  .headerText p {
+  font-size: 1.2rem;
+}
+
   .content {
     padding: 0 164px;
+    margin-bottom: 50px;
   }
+
+  .content p {
+  font-size: 1.2rem;
+}
 
   .content-img {
     height: 450px;
