@@ -171,7 +171,7 @@ h2 { font-family:YGO_Card_JP, serif; }
 h3 { font-family:YGO_Card_JP, serif; }
 .btn {
   text-align: center;
-  margin-top: 5%;
+  margin-top: 8%;
 }
 .n-button {
   text-align: center;
