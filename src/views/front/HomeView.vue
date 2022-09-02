@@ -2,13 +2,13 @@
   <div class="container">
     <n-carousel :show-dots="false" autoplay interval="3000">
       <div style="width:100%;">
-        <img class="carousel-img" src="@/assets/carousel_07.jpg">
+        <img class="carousel-img" src="@/assets/carousel_01.jpg">
       </div>
       <div  style="width:100%">
-        <img class="carousel-img" src="@/assets/carousel_08.jpg">
+        <img class="carousel-img" src="@/assets/carousel_02.jpg">
       </div>
       <div  style="width:100%">
-        <img class="carousel-img" src="@/assets/carousel_09.jpg">
+        <img class="carousel-img" src="@/assets/carousel_03.jpg">
       </div>
     </n-carousel>
   </div>
